@@ -67,7 +67,7 @@ describe("About Functions", function() {
       return secondArg;
     }
     
-    expect(returnSecondArg("only give first arg")).toBe("undefined");
+    expect(returnSecondArg("only give first arg")).toBe(undefined);
     
     function returnAllArgs() {
       var argsArray = [];
@@ -106,9 +106,10 @@ describe("About Functions", function() {
       // An internal comment
       return a * b;
     };
-    expect(multiply.toString()).toBe('function(a, b) {
-      // An internal comment
-      return a * b;
-    }');
-  });    
+    
+   var newMultiply = multiply.toString().replace(/\s+/g, ' ');
+
+  expect(newMultiply).toBe('function(a, b) { // An internal comment return a * b; }');  
+  });
+      
 });
